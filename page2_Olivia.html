@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<!-- head -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CS 360/560 Spring 2019</title>
+
+  <!-- bulma 0.7.2 and font awesome v5.7.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" integrity="sha256-2pUeJf+y0ltRPSbKOeJh09ipQFYxUdct5nTY6GAXswA=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<!-- body -->
+<body>
+
+  <!-- header -->
+  <section class="hero is-primary is-bold">
+    <!-- todo: change assignment and name -->
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Visualization Assignment
+        </h1>
+        <h2 class="subtitle">
+          Full Name
+        </h2>
+      </div>
+    </div>
+
+    <!-- todo: change navigation as needed -->
+    <div class="hero-foot">
+      <div class="container">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+
+          <div class="navbar-brand">
+            <a class="navbar-item" href="index.html">
+              <span class="icon">
+                <i class="fas fa-home"></i>
+              </span>
+              <span>Home</span>
+            </a>
+          </div>
+
+          <div id="main-navbar" class="navbar-menu">
+            <a class="navbar-item" href="#vis1">
+              <span class="icon">
+                <i class="fas fa-chart-area"></i>
+              </span>
+              <span>Visualization 1</span>
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <a class="navbar-item" href="#grade">
+              <span class="icon">
+                <i class="fas fa-tasks"></i>
+              </span>
+              <span>Grade</span>
+            </a>
+
+            <a class="navbar-item" href="#about">
+              <span class="icon">
+                <i class="fas fa-info-circle"></i>
+              </span>
+              <span>About</span>
+            </a>
+          </div>
+
+        </nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- todo: add sections as necessary -->
+  <section class="section">
+    <div class="container content">
+      <!-- todo: modify as necessary (or move visualizations to separate pages) -->
+      <h2>Visualization 1</h2>
+
+      <svg width="100%" height="400" style="background-color: whitesmoke; border: 1px solid black;">
+      </svg>
+
+      <h3>Interpretation</h3>
+
+      <p>
+        If appropriate, provide a brief discussion of how to interpret this visualization (e.g. how the data is encoded) and how to interact with this visualization. Some of this discussion may not be necessary depending on the legends provided with the visualization.
+      </p>
+
+      <h3>Discussion</h3>
+
+      <p>
+        If appropriate, provide a brief discussion of the primary goal and findings of the visualization, any challenges encountered creating the visualization, and any other context as required by the assignment.
+      </p>
+
+      <h3>Credit</h3>
+
+      <p>
+        If appropriate, provide credit for the dataset, any code used, and design inspirations here. Unsufficient discussion here is a violation of the <a href="/syllabus.html#cheating-policy">academic honesty policy</a> and may result in an F grade for the assignment or the <em>entire</em> course.
+      </p>
+    </div>
+  </section>
+
+  <!-- separator between sections -->
+  <hr class="container">
+
+  <!-- grade section -->
+  <section class="section">
+    <div class="container content">
+      <h2 id="grade">
+        Expected Grade
+      </h2>
+
+      <!-- todo: modify to indicate your expected grade -->
+      <table class="table is-hoverable">
+        <thead>
+          <tr>
+            <th>Done?</th>
+            <th>Letter</th>
+            <th>Justification</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- d level functionality -->
+          <tr>
+            <td class="has-text-centered">
+              <i class="far fa-fw fa-check-circle has-text-success"></i>
+            </td>
+
+            <td class="has-text-centered">
+              D
+            </td>
+
+            <td>
+              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
+            </td>
+          </tr>
+
+          <!-- c level functionality -->
+          <tr>
+            <td class="has-text-centered">
+              <i class="far fa-fw fa-check-circle has-text-success"></i>
+            </td>
+
+            <td class="has-text-centered">
+              C
+            </td>
+
+            <td>
+              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
+            </td>
+          </tr>
+
+          <!-- b level functionality -->
+          <tr>
+            <td class="has-text-centered">
+              <i class="far fa-fw fa-times-circle has-text-danger"></i>
+            </td>
+
+            <td class="has-text-centered">
+              B
+            </td>
+
+            <td>
+              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
+            </td>
+          </tr>
+
+
+          <!-- a level functionality -->
+          <tr>
+            <td class="has-text-centered">
+              <i class="far fa-fw fa-times-circle has-text-danger"></i>
+            </td>
+
+            <td class="has-text-centered">
+              A
+            </td>
+
+            <td>
+              If appropriate, provide a brief justification for this level of functionality. Clearly state if this level was not implemented.
+            </td>
+          </tr>
+        <tbody>
+      </table>
+
+      <p>
+        Any additional context you want to provide regarding functionality and grading can be included here. This may include any challenges or bugs you ran into that prevented you from implementing additional functionality.
+      </p>
+    </div>
+  </section>
+
+  <!-- about section -->
+  <section class="section">
+    <div class="container content">
+      <h2 id="about">
+        About Me
+      </h2>
+
+      <div class="media">
+        <div class="media-left">
+          <p class="image is-128x128">
+            <img src="emmit_profile.png">
+          </p>
+        </div>
+
+        <div class="media-content">
+            <p>
+              <strong>Emmit Parubrub</strong>
+              <br/>
+              My name is Emmit Kamakaniʻoluʻoluʻokoʻolau Kahaʻulelio Parubrub and I am a student at the University of San Francisco 
+              majoring in Computer Science. I was born on the island of Oahu, Hawaiʻi and raised in Kahaluʻu. I love being in the ocean, 
+              the mountains, or the gym but I have always been fascinated with technology. When I was a child my environment was very 
+              rural and filled with nature so when I would see new technology I would be interested and intrigued by how it worked. 
+              I am majoring in computer science to foster child-like fascination and passion for technology.
+              <br/>
+
+              <a href="https://github.com/eparubrub">
+                <span class="fab fa-github"></span>
+                <span>Github</span>
+              </a>
+              &bullet;
+              <a href="https://www.linkedin.com/in/emmit-parubrub/">
+                <span class="fab fa-linkedin"></span>
+                <span>LinkedIn</span>
+              </a>
+            </p>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <small>
+        <a href="#top">
+          <span class="fas fa-arrow-up"></span>
+          <span>Back to Top</span>
+        </a>
+        <br/>
+        <a href="/">CS 360/560 Data Visualization</a>
+        &bullet;
+        <a href="https://myusf.usfca.edu/arts-sciences/computer-science">Department of Computer Science</a>
+        &bullet;
+        <a href="https://www.usfca.edu/">University of San Franciscio</a>
+      </small>
+    </div>
+  </footer>
+
+<!-- end body and html -->
+</body>
+</html>
