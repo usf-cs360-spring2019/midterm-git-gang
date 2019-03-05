@@ -131,13 +131,20 @@
 
         This is the pre-processing that we performed for the following visualizations:        <br/>        <br/>
 
-        Darianne:        <br/>        <br/>
+        Darianne:        <br/>
+        For the first Visualization I did not have to do much wrangling with the data besides calculating the number of incidents which I calculated by counting the number of Call Type for each Call Type, since every incident had a Call Type associated with it. 
+        <br/>
 
 
         Emmit:        <br/>
         For this visualization, I first prefiltered the call types to only include the types that fall under "Medical Incident". Next, I filtered the data to omit all incidents
          that had empty on-scene datetimes. Lastly, I calculated the duration of time between dispatch and on-scene time into minutes then I filtered the data to exclude all negative 
          values and values under one minute.
+        <br/>
+        
+        Olivia:       <br/>
+        For my visualization, the only calculation I had to make was calculating the travel time from the scene to the hospital, which I did by subtracting the “Hospital DtTm” category from the “Transport DtTm” category. This calculation gave me the travel time since both these fields are labeled as type Date and Time in Tableau. 
+        <br/>
 
       </p>
 
