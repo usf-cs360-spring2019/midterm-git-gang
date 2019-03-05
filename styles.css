@@ -1,0 +1,58 @@
+.tableau_div{
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 10px;
+}
+
+.tableau_vis{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.vis{
+    background-color: white;
+    max-width: 960px;
+    max-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.d3vis{
+    width: 100%;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+
+}
+
+.tick text{
+    fill: rgb(121, 121, 121);
+    font-weight: bold;
+}
+
+.tick line{
+    color: #DCDCDC
+}
+
+.axis_label{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.axis_label2{
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.title{
+    font-weight: 400;
+    font-size: 20px;
+}
