@@ -120,29 +120,26 @@
         We filtered our data to only include the latest 3 months of data which begins on December 1st, 2018  and ends on Febuary 28th, 2019.         <br/>        <br/>
       
         To create our charts, we used these columns:        <br/>        <br/>
-          Call Type - whether the incident call was categorized as Alarms, Citizen Assist/Service Call, Electrical Hazard, Gas Leak (Natural and LP Gas), Medical Incident, Other, Outside Fire, Structure Fire, Traffic Collision, or Water Rescue. <br/>
-          Call Date - Date the call is received at the 911 Dispatch Center. Used for reporting purposes.        <br/>
-          Received DtTm - Date and time of call is received at the 911 Dispatch Center.        <br/>
-          Entry DtTm - Date and time the 911 operator submits the entry of the initical call information into the CAD system        <br/>
-          Dispatch DtTm - Date and time the 911 operator dispatches this unit to the call.        <br/>
-          On Scene DtTm - Date and time the unit records arriving to the location of the incident        <br/>
-          Transport DtTm  - If this unit is an ambulance, date and time the unit begins the transport to the hospital        <br/>
-          Hospital DtTm - If this unit is an ambulance, date and time the unit arrives at the hospital.        <br/>        <br/>        <br/>
+        <b>Call Type</b> - whether the incident call was categorized as Alarms, Citizen Assist/Service Call, Electrical Hazard, Gas Leak (Natural and LP Gas), Medical Incident, Other, Outside Fire, Structure Fire, Traffic Collision, or Water Rescue. <br/>
+          <b>Call Date</b> - Date the call is received at the 911 Dispatch Center. Used for reporting purposes.        <br/>
+          <b>Received DtTm</b> - Date and time of call is received at the 911 Dispatch Center.        <br/>
+          <b>Entry DtTm</b> - Date and time the 911 operator submits the entry of the initical call information into the CAD system        <br/>
+          <b>Dispatch DtTm</b> - Date and time the 911 operator dispatches this unit to the call.        <br/>
+          <b>On Scene DtTm</b> - Date and time the unit records arriving to the location of the incident        <br/>
+          <b>Transport DtTm</b> - If this unit is an ambulance, date and time the unit begins the transport to the hospital        <br/>
+          <b>Hospital DtTm</b> - If this unit is an ambulance, date and time the unit arrives at the hospital.        <br/>        <br/>        <br/>
 
         This is the pre-processing that we performed for the following visualizations:        <br/>        <br/>
 
-        Darianne:        <br/>
+        <b>Darianne: </b>       <br/>
         For the first Visualization I did not have to do much wrangling with the data besides calculating the number of incidents which I calculated by counting the number of Call Type for each Call Type, since every incident had a Call Type associated with it. 
-        <br/>
-
-
-        Emmit:        <br/>
+        <br/><br/>
+        <b>Emmit:</b>        <br/>
         For this visualization, I first prefiltered the call types to only include the types that fall under "Medical Incident". Next, I filtered the data to omit all incidents
          that had empty on-scene datetimes. Lastly, I calculated the duration of time between dispatch and on-scene time into minutes then I filtered the data to exclude all negative 
          values and values under one minute.
-        <br/>
-        
-        Olivia:       <br/>
+        <br/><br/>
+        <b>Olivia: </b><br/>
         For my visualization, the only calculation I had to make was calculating the travel time from the scene to the hospital, which I did by subtracting the “Hospital DtTm” category from the “Transport DtTm” category. This calculation gave me the travel time since both these fields are labeled as type Date and Time in Tableau. 
         <br/>
 
