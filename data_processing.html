@@ -54,31 +54,31 @@
           </div>
 
           <div id="main-navbar" class="navbar-brand">
-            <a class="navbar-item" href="page3_Darianne.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 1</span>
-            </a>
-          </div>
-
-          <div id="main-navbar" class="navbar-brand">
-            <a class="navbar-item" href="page1_Emmit.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 2</span>
-            </a>
-          </div>
-
-          <div id="main-navbar" class="navbar-brand">
-            <a class="navbar-item" href="page2_Olivia.html">
-              <span class="icon">
-                <i class="fas fa-chart-area"></i>
-              </span>
-              <span>Visualization 3</span>
-            </a>
-          </div>
+              <a class="navbar-item" href="Darianne.html">
+                <span class="icon">
+                  <i class="fas fa-chart-area"></i>
+                </span>
+                <span>Visualization 1</span>
+              </a>
+            </div>
+  
+            <div id="main-navbar" class="navbar-brand">
+              <a class="navbar-item" href="Emmit.html">
+                <span class="icon">
+                  <i class="fas fa-chart-area"></i>
+                </span>
+                <span>Visualization 2</span>
+              </a>
+            </div>
+  
+            <div id="main-navbar" class="navbar-brand">
+              <a class="navbar-item" href="Olivia.html">
+                <span class="icon">
+                  <i class="fas fa-chart-area"></i>
+                </span>
+                <span>Visualization 3</span>
+              </a>
+            </div>
 
           <div id="main-navbar" class="navbar-brand">
             <a class="navbar-item" href="prototypes.html">
@@ -117,30 +117,49 @@
 
       <p>
         The dataset we are using to create these visualizations comes from the <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Fire Department Calls for Service</a>. 
-        We filtered our data to only include the latest 3 months of data which begins on December 1st, 2018  and ends on Febuary 28th, 2019.         <br/>        <br/>
-      
-        To create our charts, we used these columns:        <br/>        <br/>
+        We filtered our data to only include the latest 3 months of data which begins on December 1st, 2018  and ends on Febuary 28th, 2019.         
+        <br/>        
+        <br/>
+        To create our charts, we used these columns:
+        <br/>
+        <br/>
         <b>Call Type</b> - whether the incident call was categorized as Alarms, Citizen Assist/Service Call, Electrical Hazard, Gas Leak (Natural and LP Gas), Medical Incident, Other, Outside Fire, Structure Fire, Traffic Collision, or Water Rescue. <br/>
-          <b>Call Date</b> - Date the call is received at the 911 Dispatch Center. Used for reporting purposes.        <br/>
-          <b>Received DtTm</b> - Date and time of call is received at the 911 Dispatch Center.        <br/>
-          <b>Entry DtTm</b> - Date and time the 911 operator submits the entry of the initical call information into the CAD system        <br/>
-          <b>Dispatch DtTm</b> - Date and time the 911 operator dispatches this unit to the call.        <br/>
-          <b>On Scene DtTm</b> - Date and time the unit records arriving to the location of the incident        <br/>
-          <b>Transport DtTm</b> - If this unit is an ambulance, date and time the unit begins the transport to the hospital        <br/>
-          <b>Hospital DtTm</b> - If this unit is an ambulance, date and time the unit arrives at the hospital.        <br/>        <br/>        <br/>
-
-        This is the pre-processing that we performed for the following visualizations:        <br/>        <br/>
-
-        <b>Darianne: </b>       <br/>
-        For the first Visualization I did not have to do much wrangling with the data besides calculating the number of incidents which I calculated by counting the number of Call Type for each Call Type, since every incident had a Call Type associated with it. 
-        <br/><br/>
-        <b>Emmit:</b>        <br/>
-        For this visualization, I first prefiltered the call types to only include the types that fall under "Medical Incident". Next, I filtered the data to omit all incidents
+          <b>Call Date</b> - Date the call is received at the 911 Dispatch Center. Used for reporting purposes.
+          <br/>
+          <b>Received DtTm</b> - Date and time of call is received at the 911 Dispatch Center.
+          <br/>
+          <b>Entry DtTm</b> - Date and time the 911 operator submits the entry of the initical call information into the CAD system
+          <br/>
+          <b>Dispatch DtTm</b> - Date and time the 911 operator dispatches this unit to the call.
+          <br/>
+          <b>On Scene DtTm</b> - Date and time the unit records arriving to the location of the incident        
+          <br/>
+          <b>Transport DtTm</b> - If this unit is an ambulance, date and time the unit begins the transport to the hospital        
+          <br/>
+          <b>Hospital DtTm</b> - If this unit is an ambulance, date and time the unit arrives at the hospital.        
+          <br/>        
+          <br/>        
+          <br/>
+        This is the pre-processing that we performed for the following visualizations:        
+        <br/>        
+        <br/>
+        <b>Darianne:</b>
+        <br/>
+        <i>Pre-feedback</i> - For the first Visualization I did not have to do much wrangling with the data besides calculating the number of incidents which I calculated by counting the number of Call Type for each Call Type, since every incident had a Call Type associated with it. 
+        <br/>
+        <br/>
+        <b>Emmit:</b>
+        <br/>
+        <i>Pre-feedback</i> - For this visualization, I first prefiltered the call types to only include the types that fall under "Medical Incident". Next, I filtered the data to omit all incidents
          that had empty on-scene datetimes. Lastly, I calculated the duration of time between dispatch and on-scene time into minutes then I filtered the data to exclude all negative 
          values and values under one minute.
-        <br/><br/>
-        <b>Olivia: </b><br/>
-        For my visualization, the only calculation I had to make was calculating the travel time from the scene to the hospital, which I did by subtracting the “Hospital DtTm” category from the “Transport DtTm” category. This calculation gave me the travel time since both these fields are labeled as type Date and Time in Tableau. 
+        <br><br>
+        <i>Final</i> - In the final version, although it had one of the highest average travel times, I omitted the Lincoln Park data due to the lack of data that was provided. I also implemented a heatmap instead of a line chart due to the feedback I received. I included a heatmap example in the prototypes below the line chart prototype.
+        <br/>
+        <br/>
+        <b>Olivia: </b>
+        <br/>
+        <i>Pre-feedback</i> - For my visualization, the only calculation I had to make was calculating the travel time from the scene to the hospital, which I did by subtracting the “Hospital DtTm” category from the “Transport DtTm” category. This calculation gave me the travel time since both these fields are labeled as type Date and Time in Tableau. 
         <br/>
 
       </p>
