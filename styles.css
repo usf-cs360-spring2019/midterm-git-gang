@@ -71,3 +71,43 @@ div.tooltip {
     border-width: 2px;
     border-color: gray;
 }
+
+/* svg {
+	pointer-events: all;
+
+	.rect {
+		visibility: hidden;
+	}
+
+	.area {
+		stroke-width: 0;
+		cursor: pointer;
+	}
+
+	.circle-marker {
+		fill: #495057;
+		stroke: #fff;
+		stroke-width: 2px;
+	}
+
+	.vertical-line {
+		pointer-events: none;
+		stroke: #ced4da;
+	}
+
+	.type-MedicalIncident {
+		fill: red;
+	}
+	.type-Alarms {
+		fill: blue;
+	}
+	.type-StructureFire {
+		fill: green;
+	}
+	.type-TrafficCollision {
+		fill: olive;
+	}
+	.type-CitizenAssistServiceCall {
+		fill: aliceblue;
+	}
+} */

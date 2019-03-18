@@ -1,7 +1,7 @@
-// function get_colors(n) {
-//     var colors = ["#a6cee3","#1f78b4","#b2df8a","#33a02c",
-//     "#fb9a99","#e31a1c","#fdbf6f","#ff7f00","#cab2d6",
-//     "#6a3d9a"];
+function get_colors(n) {
+    var colors = ["#a6cee3","#1f78b4","#b2df8a","#33a02c",
+    "#fb9a99"];
+}
     
 //      return colors[ n % colors.length];}
 
@@ -11,32 +11,30 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 
 
 // date of incident
-var parseDate = d3.time.format("%b/%d/%y").parse;
+var parseDate = d3.timeParse("%x");
 
-var x = d3.time.scale()
-    .range([0, width]);
+var x = d3.scaleTime()
+    .range([0, width*.75]);
 
-var y = d3.scale.linear()
-    .range([height, 0]);
+var y = d3.scaleLinear()
+    .range([height*.75 , 0]);
 
-var color = d3.scale.category20();
+var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+var xAxis = d3.axisBottom(x)
 
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left")
+var yAxis = d3.axisLeft(y);
     //.ticks(11, "s");
 
-var area = d3.svg.area()
+var area = d3.area()
     .x(function(d) { return x(d.date); })
     .y0(function(d) { return y(d.y0); })
     .y1(function(d) { return y(d.y0 + d.y); });
 
-var stack = d3.layout.stack()
-    .values(function(d) { return d.values; });
+var stack = d3.stack()
+    .keys(["Medical Incident", "Alarms", "Structure Fire", "Traffic Collision", "Citizen Assist Service Call"])
+    .order(d3.stackOrdersNone)
+    .offset(d3.stackOffsetNone)
 
 var svg = d3.select("body").select("#vis1").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -46,7 +44,7 @@ var svg = d3.select("body").select("#vis1").append("svg")
 
     svg.append("text")
     .attr("x", 0)
-    .attr("y", -40)
+    .attr("y", 50)
     .attr("dy", "0.71em")
     .attr("fill", "#000")
     .text("Top 5 Incident Types (December 2018 - February 2019)")
@@ -61,22 +59,25 @@ var svg = d3.select("body").select("#vis1").append("svg")
     .style("fill", "#000000")
     .text("The plot of count of Call Type for Call Date Day. Color shows details about Call Type. The view is filtered on Call Type, which has multiple members selected.");
 
-d3.csv("call_type_data.csv", function(error, data) {
+d3.csv("call_type_data.csv").then(function(data) {
    
     color.domain(d3.keys(data[0]).filter(function(key) {return key !== "date"; }));
     
     data.forEach(function(d) {  
         d.date = parseDate(d.date);
+
+        browsers = stack(color.domain().map(function(name) {
+            console.log(name)
+            console.log(d.date)
+            return {
+                name: name,
+                values: data.map(function(d) {
+                    return {date: d.date, y:d[name] * 1};
+                })
+            };
+        }));
     }); 
 
-    var browsers = stack(color.domain().map(function(name) {
-        return {
-            name: name,
-            values: data.map(function(d) {
-                return {date: d.date, y:d[name] * 1};
-            })
-        };
-    }));
 
     // Find the value of the date with the most incidents
     var maxDateVal = d3.max(data, function(d) {
@@ -91,6 +92,8 @@ d3.csv("call_type_data.csv", function(error, data) {
         // Set scale for axis
     x.domain(d3.extent(data, function(d) { return d.date; }));
     y.domain([0, maxDateVal])
+
+    console.log(browsers)
 
     var browser = svg.selectAll(".browser")
         .data(browsers)
@@ -113,10 +116,13 @@ d3.csv("call_type_data.csv", function(error, data) {
 
     svg.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0," + height + ")")
-        .call(xAxis).append("text")
+        .attr("transform", "translate(0,+338)")
+        .call(xAxis)
+
+        
+    svg.append("text")
         .attr("x", 350)
-        .attr("y", 36)
+        .attr("y", 0)
         .attr("fill", "#000")
         .text("Date of Incident")
         .style("font-weight", "bold");
@@ -165,4 +171,3 @@ d3.csv("call_type_data.csv", function(error, data) {
 
     });
 
-    
