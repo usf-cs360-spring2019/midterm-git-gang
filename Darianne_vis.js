@@ -5,8 +5,6 @@
     
 //      return colors[ n % colors.length];}
 
-drawChart = function() {
-
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
      width = 960 - margin.left - margin.right,
      height = 500 - margin.top - margin.bottom;
@@ -62,109 +60,109 @@ var svg = d3.select("body").select("#vis1").append("svg")
     .style("font", "12px avenir")
     .style("fill", "#000000")
     .text("The plot of count of Call Type for Call Date Day. Color shows details about Call Type. The view is filtered on Call Type, which has multiple members selected.");
-}
-    d3.csv("call_type_data.csv", function(error, data) {
+
+d3.csv("call_type_data.csv", function(error, data) {
    
-        color.domain(d3.keys(data[0]).filter(function(key) {return key !== "date"; }));
+    color.domain(d3.keys(data[0]).filter(function(key) {return key !== "date"; }));
     
-        data.forEach(function(d) {  
-            d.date = parseDate(d.date);
-        }); 
+    data.forEach(function(d) {  
+        d.date = parseDate(d.date);
+    }); 
 
-        var browsers = stack(color.domain().map(function(name) {
-            return {
-                name: name,
-                values: data.map(function(d) {
-                    return {date: d.date, y:d[name] * 1};
-                })
-            };
-        }));
+    var browsers = stack(color.domain().map(function(name) {
+        return {
+            name: name,
+            values: data.map(function(d) {
+                return {date: d.date, y:d[name] * 1};
+            })
+        };
+    }));
 
-        // Find the value of the date with the most incidents
-        var maxDateVal = d3.max(data, function(d) {
-            var vals = d3.keys(d).map(
-                function(key){
-                    return key !== "date" ? d[key] : 0 
-                }
-                );
-                return d3.sum(vals);
-        });
+    // Find the value of the date with the most incidents
+    var maxDateVal = d3.max(data, function(d) {
+        var vals = d3.keys(d).map(
+            function(key){
+                return key !== "date" ? d[key] : 0 
+            }
+        );
+        return d3.sum(vals);
+    });
 
         // Set scale for axis
-        x.domain(d3.extent(data, function(d) { return d.date; }));
-        y.domain([0, maxDateVal])
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, maxDateVal])
 
-        var browser = svg.selectAll(".browser")
-            .data(browsers)
-            .enter().append("g")
-            .attr("class", "browser");
+    var browser = svg.selectAll(".browser")
+        .data(browsers)
+        .enter().append("g")
+        .attr("class", "browser");
 
-        browser.append("path")
-            .attr("class", "area")
-            .attr("d", function(d) { return area(d.values); })
-            .style("fill", function(d,i) { 
-                    return color(d.name); });
+    browser.append("path")
+        .attr("class", "area")
+        .attr("d", function(d) { return area(d.values); })
+        .style("fill", function(d,i) { 
+            return color(d.name); });
     
-        browser.append("text")
-            .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-            .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
-            .attr("x", -6)
-            .attr("dy", ".35em")
-            .text(function(d) { 
-                return d.name; });
+    browser.append("text")
+        .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
+        .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
+        .attr("x", -6)
+        .attr("dy", ".35em")
+        .text(function(d) { 
+            return d.name; });
 
-        svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + height + ")")
-            .call(xAxis).append("text")
-            .attr("x", 350)
-            .attr("y", 36)
-            .attr("fill", "#000")
-            .text("Date of Incident")
-            .style("font-weight", "bold");
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis).append("text")
+        .attr("x", 350)
+        .attr("y", 36)
+        .attr("fill", "#000")
+        .text("Date of Incident")
+        .style("font-weight", "bold");
 
-        svg.append("g")
-            .attr("class", "y axis")
-            .call(yAxis)
-            .append("text")
-            .attr("transform", "rotate(-90)")
-            .attr("x", -250)
-            .attr("y", -40)
-            .attr("dy", "0.3408em")
-            .attr("fill", "#000")
-            .text("Number of Incidents")
-            .style("font-weight", "bold");  
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("x", -250)
+        .attr("y", -40)
+        .attr("dy", "0.3408em")
+        .attr("fill", "#000")
+        .text("Number of Incidents")
+        .style("font-weight", "bold");  
     
         
         
-        // Creating legend
-        var legend = svg.selectAll(".legend")
-            .data(color.domain()).enter()
-            .append("g")
-            .attr("class","legend")
-            .attr("transform", "translate(" + (width +20) + "," + 0+ ")");
+    // Creating legend
+    var legend = svg.selectAll(".legend")
+        .data(color.domain()).enter()
+        .append("g")
+        .attr("class","legend")
+        .attr("transform", "translate(" + (width +20) + "," + 0+ ")");
     
-        // Creates color boxes in legend
-        legend.append("rect")
-            .attr("x", 0) 
-            .attr("y", function(d, i) { return 20 * i; })
-            .attr("width", 10)
-            .attr("height", 10)
-            .style("fill", function(d, i) {
-                return get_colors(i);}); 
+    // Creates color boxes in legend
+    legend.append("rect")
+        .attr("x", 0) 
+        .attr("y", function(d, i) { return 20 * i; })
+        .attr("width", 10)
+        .attr("height", 10)
+        .style("fill", function(d, i) {
+            return get_colors(i);}); 
     
-        // Adds text to the legend
-        legend.append("text")
-            .attr("x", 20) 
-            .attr("dy", "0.75em")
-            .attr("y", function(d, i) { return 20 * i; })
-            .text(function(d) {return d});
+    // Adds text to the legend
+    legend.append("text")
+        .attr("x", 20) 
+        .attr("dy", "0.75em")
+        .attr("y", function(d, i) { return 20 * i; })
+        .text(function(d) {return d});
     
-        legend.append("text")
-            .attr("x",0) 
-            .attr("y",-10)
-            .text("Incident Call Type");
+    legend.append("text")
+        .attr("x",0) 
+        .attr("y",-10)
+        .text("Incident Call Type");
 
-    }).then(drawChart);
+    });
 
     
