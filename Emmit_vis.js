@@ -96,6 +96,11 @@ function create_chart(){
         .append("svg")
         .attr("width", width)
         .attr("height", height)
+    
+    var div = d3.select("#vis")
+        .append("div")	
+        .attr("class", "tooltip")				
+        .style("opacity", 0);
 
     svg.selectAll("rect")
         .data(cleaned_data)
@@ -130,7 +135,20 @@ function create_chart(){
            })
         .attr("width", square_size)
         .attr("height", square_size)
-        .attr('transform', 'translate(+80, +190)');
+        .attr('transform', 'translate(+80, +190)')
+        .on("mouseover", function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9)
+            div	.html(d.day + "<br/>")	
+                .style("left", (d3.event.pageX - 100) + "px")		
+                .style("top", (d3.event.pageY - 280) + "px");	
+            })					
+        .on("mouseout", function(d) {		
+            div.transition()		
+                .duration(500)		
+                .style("opacity", 0);	
+        });;
         
 
 
