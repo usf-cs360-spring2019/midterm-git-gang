@@ -30,8 +30,8 @@ rect:hover {
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 150px;					
-    height: 100px;					
+    width: 140px;					
+    height: 120px;					
     padding: 2px;	
     font: 13px sans-serif;		
     background: orange;	
@@ -45,8 +45,18 @@ div.tooltip {
 }
 
 .axes{
-    font: 13px sans-serif;	
-    font-weight: 900;	
+    font: 14px sans-serif;	
+    font-weight: 400;	
+    color: black;
+}
 
+.axis_label{
+    font: 15px sans-serif;	
+    font-weight: 900;
+    text-decoration: underline;	
+}
+
+.title{
+    font: 30px sans-serif;	
 }
 

@@ -171,13 +171,33 @@ function create_chart(){
             .domain(["Treasure Island", "Lakeshore", "Visitacion Valley", "Presidio", "Mission Bay", "Fin. District / South Beach"])
             .range([0, 150]);
         
-        var yAxis = d3.axisLeft(yScale)
+        var yAxis = d3.axisRight(yScale)
             
         svg.append("g")
             .call(yAxis)
             .attr("class", "axes")
-            .attr('transform', 'translate(+190, +173)')
+            .attr('transform', 'translate(+0, +173)')
             .selectAll('.domain').remove()
+
+        svg.append("text")
+            .attr('y', +150)
+            .attr('x', +10)
+            .attr('class', "axis_label")
+            .text("Neighborhood")
+
+        svg.append("text")
+            .attr('y', +130)
+            .attr('x', +580)
+            .attr('class', "axis_label")
+            .text("Day of the Week")
+
+        svg.append("text")
+            .attr('y', +50)
+            .attr('x', +70)
+            .attr('class', "title")
+            .text("Worst Average Fire Fighter Travel Times | Dec 2018 - Feb 2019 in SF")
+
+        
 
 
         
