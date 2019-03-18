@@ -30,12 +30,33 @@ rect:hover {
 div.tooltip {	
     position: absolute;			
     text-align: center;			
-    width: 60px;					
-    height: 28px;					
-    padding: 2px;				
-    font: 12px sans-serif;		
+    width: 140px;					
+    height: 120px;					
+    padding: 2px;	
+    font: 13px sans-serif;		
     background: orange;	
     border: 0px;		
     border-radius: 8px;			
     pointer-events: none;			
 }
+
+.tick line{
+    visibility:hidden;
+}
+
+.axes{
+    font: 14px sans-serif;	
+    font-weight: 400;	
+    color: black;
+}
+
+.axis_label{
+    font: 15px sans-serif;	
+    font-weight: 900;
+    text-decoration: underline;	
+}
+
+.title{
+    font: 30px sans-serif;	
+}
+

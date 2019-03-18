@@ -135,12 +135,14 @@ function create_chart(){
            })
         .attr("width", square_size)
         .attr("height", square_size)
-        .attr('transform', 'translate(+80, +190)')
+        .attr('transform', 'translate(+160, +160)')
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
                 .style("opacity", .9)
-            div	.html(d.day + "<br/>")	
+            div.html("Day of the Month: " + d.day + "<br/><br/>" 
+                     + "Neighborhood: " + d.neighborhood + "<br/><br/>"
+                     + "Average Time : " + d.average + "<br/>")	
                 .style("left", (d3.event.pageX - 100) + "px")		
                 .style("top", (d3.event.pageY - 280) + "px");	
             })					
@@ -149,6 +151,55 @@ function create_chart(){
                 .duration(500)		
                 .style("opacity", 0);	
         });;
+
+        var xScale = d3.scaleLinear()
+            .domain([0, 31])
+            .range([0, 900]);
+        
+        var xAxis = d3.axisTop(xScale)
+            .tickValues([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+                        21,22,23,24,25,26,27,28,29,30,31])
+            
+        svg.append("g")
+            .call(xAxis)
+            .attr("class", "axes")
+            .attr('transform', 'translate(+173, +165)')
+            .selectAll('.domain').remove()
+
+
+        var yScale = d3.scalePoint()
+            .domain(["Treasure Island", "Lakeshore", "Visitacion Valley", "Presidio", "Mission Bay", "Fin. District / South Beach"])
+            .range([0, 150]);
+        
+        var yAxis = d3.axisRight(yScale)
+            
+        svg.append("g")
+            .call(yAxis)
+            .attr("class", "axes")
+            .attr('transform', 'translate(+0, +173)')
+            .selectAll('.domain').remove()
+
+        svg.append("text")
+            .attr('y', +150)
+            .attr('x', +10)
+            .attr('class', "axis_label")
+            .text("Neighborhood")
+
+        svg.append("text")
+            .attr('y', +130)
+            .attr('x', +580)
+            .attr('class', "axis_label")
+            .text("Day of the Week")
+
+        svg.append("text")
+            .attr('y', +50)
+            .attr('x', +70)
+            .attr('class', "title")
+            .text("Worst Average Fire Fighter Travel Times | Dec 2018 - Feb 2019 in SF")
+
+        
+
+
         
 
 
