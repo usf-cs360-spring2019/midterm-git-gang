@@ -93,10 +93,18 @@ function create_chart(){
     width = 1100
     height = 600
     square_size = 29
+    
     var svg = d3.select("#vis")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
+
+    var label = d3.select("#vis")
+        .append("svg")
+        .attr("width", 143)
+        .attr("height", 20)
+        .attr('transform', 'translate(+568, -220)')
+        .attr('class', "legend")
     
     var div = d3.select("#vis")
         .append("div")	
@@ -217,13 +225,6 @@ function create_chart(){
             .attr('class', "axes")
             .text("18.25")
 
-        var label = d3.select("#vis")
-            .append("svg")
-            .attr("width", 143)
-            .attr("height", 20)
-            .attr('transform', 'translate(+568, -220)')
-            .attr('class', "legend")
-
         label.selectAll("rect")
             .data(temp_select)
             .enter()
@@ -239,6 +240,5 @@ function create_chart(){
                 console.log(color)
                 return color;
             })
-            // .attr("fill", "red")
             
 }
