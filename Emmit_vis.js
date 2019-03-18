@@ -84,18 +84,27 @@ function clean_and_format_data(){
     for(i in FDSB){
         cleaned_data.push(FDSB[i]);
     }
-    console.log(data_objects)
-    console.log(cleaned_data)
+    // console.log(data_objects)
+    // console.log(cleaned_data)
 }
 
 function create_chart(){
+    var temp_select = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]
     width = 1100
     height = 600
     square_size = 29
+    
     var svg = d3.select("#vis")
         .append("svg")
         .attr("width", width)
         .attr("height", height)
+
+    var label = d3.select("#vis")
+        .append("svg")
+        .attr("width", 143)
+        .attr("height", 20)
+        .attr('transform', 'translate(+568, -220)')
+        .attr('class', "legend")
     
     var div = d3.select("#vis")
         .append("div")	
@@ -106,6 +115,7 @@ function create_chart(){
         .data(cleaned_data)
         .enter()
         .append("rect")
+        .attr("class", "heatmap")				
         .attr("x", function(d, i) {
             return d.day * square_size;
         })
@@ -192,15 +202,43 @@ function create_chart(){
             .text("Day of the Week")
 
         svg.append("text")
-            .attr('y', +50)
+            .attr('y', +60)
             .attr('x', +70)
             .attr('class', "title")
             .text("Worst Average Fire Fighter Travel Times | Dec 2018 - Feb 2019 in SF")
 
-        
+        svg.append("text")
+            .attr('y', +380)
+            .attr('x', +590)
+            .attr('class', "axis_label_small")
+            .text("Avg Travel Time")
 
+        svg.append("text")
+            .attr('y', +400)
+            .attr('x', +535)
+            .attr('class', "axes")
+            .text("3.50")
 
-        
+        svg.append("text")
+            .attr('y', +400)
+            .attr('x', +715)
+            .attr('class', "axes")
+            .text("18.25")
 
-
+        label.selectAll("rect")
+            .data(temp_select)
+            .enter()
+            .append("rect")
+            .attr('class', "")
+            .attr("width", 7)
+            .attr("height", 20)
+            .attr("x", function(d, i) {
+                return i * 7;
+            })
+            .attr("fill", function(d, i) {
+                var color = "rgb(" + (185 - (i * 9.25)) + ", " + (219 - (i * 7.3)) + ", 255)";
+                console.log(color)
+                return color;
+            })
+            
 }
