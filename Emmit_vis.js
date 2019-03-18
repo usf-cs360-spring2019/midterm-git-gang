@@ -32,7 +32,6 @@ d3.csv("Emmit_Fire_Data.csv").then(function(data){
     create_chart();
 });
 
-//actual implementation of chart1
 function clean_and_format_data(){
     var TI = [];
     var L = [];
@@ -84,8 +83,6 @@ function clean_and_format_data(){
     for(i in FDSB){
         cleaned_data.push(FDSB[i]);
     }
-    // console.log(data_objects)
-    // console.log(cleaned_data)
 }
 
 function create_chart(){
@@ -101,7 +98,7 @@ function create_chart(){
 
     var label = d3.select("#vis")
         .append("svg")
-        .attr("width", 143)
+        .attr("width", 142)
         .attr("height", 20)
         .attr('transform', 'translate(+568, -220)')
         .attr('class', "legend")
@@ -145,7 +142,7 @@ function create_chart(){
            })
         .attr("width", square_size)
         .attr("height", square_size)
-        .attr('transform', 'translate(+160, +160)')
+        .attr('transform', 'translate(+150, +160)')
         .on("mouseover", function(d) {		
             div.transition()		
                 .duration(200)		
@@ -153,7 +150,7 @@ function create_chart(){
             div.html("Day of the Month: " + d.day + "<br/><br/>" 
                      + "Neighborhood: " + d.neighborhood + "<br/><br/>"
                      + "Average Time : " + d.average + "<br/>")	
-                .style("left", (d3.event.pageX - 100) + "px")		
+                .style("left", (d3.event.pageX - 90) + "px")		
                 .style("top", (d3.event.pageY - 280) + "px");	
             })					
         .on("mouseout", function(d) {		
@@ -173,7 +170,7 @@ function create_chart(){
         svg.append("g")
             .call(xAxis)
             .attr("class", "axes")
-            .attr('transform', 'translate(+173, +165)')
+            .attr('transform', 'translate(+163, +165)')
             .selectAll('.domain').remove()
 
 
@@ -199,7 +196,7 @@ function create_chart(){
             .attr('y', +130)
             .attr('x', +580)
             .attr('class', "axis_label")
-            .text("Day of the Week")
+            .text("Day of the Month")
 
         svg.append("text")
             .attr('y', +60)
