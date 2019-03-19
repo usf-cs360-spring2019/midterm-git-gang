@@ -146,6 +146,11 @@
         <b>Darianne:</b>
         <br/>
         <i>Pre-feedback</i> - For the first Visualization I did not have to do much wrangling with the data besides calculating the number of incidents which I calculated by counting the number of Call Type for each Call Type, since every incident had a Call Type associated with it. 
+        <br/><br/>
+        <i>Final</i> - After recieving some feedback about regrouping my area chart, I had to do some data wrangling. Originally my csv file looked similar to the <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Fire Department Calls for Service</a> data set 
+        in the sense that the calltype was a column of different incident categories (I did have way fewer columns and limit the date range of the data of course), 
+        but for my code I needed to have each category of call type have its own column with its own data for each day of the date interval:
+        December 1st, 2018 - February 28th, 2019. After doing this my data <a href="https://github.com/usf-cs360-spring2019/midterm-git-gang/blob/gh-pages/call_type_data.csv">looked like this</a>  which made it easier to use D3's stack implementation for my area chart. 
         <br/>
         <br/>
         <b>Emmit:</b>

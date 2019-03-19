@@ -10,6 +10,18 @@
     height: 500px;
 }
 
+.vis_div2{
+    size: 500px;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 1150px;
+    height: 360px;
+}
+
 .d_vis_div{
     size: 500px;
     background-color: lightgray;
@@ -122,4 +134,16 @@ div.tooltip {
     fill: none;
     stroke-width: 1px;
 
+}
+
+.prototype{
+    max-height: 450px;
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+.prototype-wide{
+    max-width: 1050px;
+    margin-top: 35px;
+    margin-left: 50px;
 }
