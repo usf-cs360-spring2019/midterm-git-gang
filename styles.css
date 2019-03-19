@@ -117,22 +117,9 @@ div.tooltip {
     border-color: white;
 }
 
-<<<<<<< HEAD
 .x_axis line {
-    stroke: red; 
+    stroke: black; 
     fill: none;
     stroke-width: 1px;
 
-=======
-.prototype{
-    max-height: 450px;
-    margin-top: 20px;
-    margin-left: 200px;
-}
-
-.prototype-wide{
-    max-width: 1050px;
-    margin-top: 35px;
-    margin-left: 50px;
->>>>>>> 63be64dac24e7a66ed1b4344f5c2ca461a161d4d
 }
