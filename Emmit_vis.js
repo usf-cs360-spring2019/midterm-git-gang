@@ -194,7 +194,7 @@ function create_chart(){
 
         svg.append("text")
             .attr('y', +130)
-            .attr('x', +580)
+            .attr('x', +575)
             .attr('class', "axis_label")
             .text("Day of the Month")
 
