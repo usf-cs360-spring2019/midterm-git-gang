@@ -10,6 +10,31 @@
     height: 500px;
 }
 
+.d_vis_div{
+    size: 500px;
+    background-color: lightgray;
+    border-style: solid;
+    border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 1200px;
+    height: 550px;
+}
+
+.d_vis_div1{
+    size: 500px;
+    background-color: white;
+    /* border-style: solid; */
+    border-width: 2px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 1000px;
+    height: 500px;
+}
+
 .vis{
     background-color: white;
     height: 85%;
@@ -94,4 +119,11 @@ div.tooltip {
     border-style: solid;
     border-width: 5px;
     border-color: white;
+}
+
+.x_axis line {
+    stroke: red; 
+    fill: none;
+    stroke-width: 1px;
+
 }
