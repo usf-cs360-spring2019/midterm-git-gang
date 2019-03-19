@@ -11,6 +11,7 @@
   <!-- bulma 0.7.2 and font awesome v5.7.1 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" integrity="sha256-2pUeJf+y0ltRPSbKOeJh09ipQFYxUdct5nTY6GAXswA=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link href="styles.css" rel="stylesheet" type="text/css">
 </head>
 
 <!-- body -->
@@ -109,24 +110,34 @@
       <!-- todo: modify as necessary (or move visualizations to separate pages) -->
       <h2>Visualization 1</h2>
 
-        <div id="vis1" class="vis1">
+        <div class="d_vis_div">
+          <div class="d_vis_div1">
           <div id="vis1" class="vis1"></div>
            <script src="darianne_chart.js"></script>
+          </div>
         </div>
 
-      <!--
       <h3>Interpretation</h3>
 
       <p>
-        If appropriate, provide a brief discussion of how to interpret this visualization (e.g. how the data is encoded) and how to interact with this visualization. Some of this discussion may not be necessary depending on the legends provided with the visualization.
+        When first looking at the data set from <a href="https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service/nuek-vuh3/data">Fire Department Calls for Service</a> my initial thoughts were to look at fires and how they relate to other variables such as time.
+        Seeing the column name 'call type' and the different categories call type had I then began to question if fires were the type of incident with the most calls.
+        I decided to create this stacked area chart to determine what type of incident is the most called into the San Francisco Fire Departments. 
+        Looking at this chart I found that Medical Incidents are in fact the most popular type of incident that is called in for the time interval we specified. 
+        After finding this out, we decided to investigate how time can relate to other attributes in our dataset for Medical Incidents. 
+        Our next two visualizations focus on time in relation to location (such as districts) for called in Medical Incidents.
       </p>
 
       <h3>Credit</h3>
 
       <p>
-        If appropriate, provide credit for the dataset, any code used, and design inspirations here. Unsufficient discussion here is a violation of the <a href="/syllabus.html#cheating-policy">academic honesty policy</a> and may result in an F grade for the assignment or the <em>entire</em> course.
+        These are the sources I found extremely helpful when creating this stacked area chart:
+        <br>
+        <a href="https://bl.ocks.org/mhkeller/09fb86058df803cad435b08f67cc774d">Michael Keller's D3 Stacked Area Chart Example</a><br>
+        <a href="http://bl.ocks.org/anaeliaovalle/e57763e85def2a95be931c69eff6bfa6">Anaelia Ovalle's D3 Stacked Area Chart Example</a><br>
+        <a href="https://observablehq.com/@d3/stacked-area-chart#">Mike Bostock's Stacked Area Chart</a>
       </p>
-      -->
+  
     </div>
   </section>
 

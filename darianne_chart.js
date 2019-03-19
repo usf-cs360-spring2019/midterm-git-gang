@@ -3,7 +3,7 @@ function get_colors(n) {
     
      return colors[ n % colors.length];}
 
-var margin = {top: 20, right: 20, bottom: 30, left: 70},
+var margin = {top: 30, right: 76, bottom: 25, left: 76},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -58,6 +58,11 @@ var svg = d3.select("body").select("#vis1").append("svg")
     .style("fill", "#000000")
     .text("The plot of count of Call Type for Call Date Day. Color shows details about Call Type. The view is filtered on Call Type, which has multiple members selected.");
 
+var div = d3.select("#vis1")
+    .append("div")	
+    .attr("class", "tooltip")				
+    .style("opacity", 0);
+
 d3.csv("call_type_data.csv", function(error, data) {
     // console.log(data)
     color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
@@ -94,8 +99,24 @@ d3.csv("call_type_data.csv", function(error, data) {
       .attr("d", function(d) { 
           //console.log(d);
           return area(d.values); })
-      .style("fill", function(d) { return color(d.name); });
+      .style("fill", function(d) { return color(d.name); })
+      .on("mouseover", function(d) {		
+        div.transition()		
+            //.duration(200)		
+            .style("opacity", .9)
+        div.html("Date: " + d.date + "<br/><br/>" 
+                 + "Incident Type: " + d[name] + "<br/><br/>"
+                 + "Number of Calls : " + d[name] + "<br/>")	
+            .style("left", (d3.event.pageX - 90) + "px")		
+            .style("top", (d3.event.pageY - 280) + "px");	
+        })					
+    .on("mouseout", function(d) {		
+        div.transition()		
+            .duration(500)		
+            .style("opacity", 0);	
+    });;;
 
+        
 //   browser.append("text")
 //       .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
 //       .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.y0 + d.value.y / 2) + ")"; })
@@ -104,8 +125,8 @@ d3.csv("call_type_data.csv", function(error, data) {
 //       .text(function(d) { return d.name; });
 
   svg.append("g") //x-axis
-      .attr("class", "x axis")
-      .attr("transform", "translate(0,+376.5)")
+      .attr("class", "x_axis")
+      .attr("transform", "translate(0,+372.25)")
       .call(xAxis);
 
     svg.append("text") //x-axis title
@@ -117,8 +138,9 @@ d3.csv("call_type_data.csv", function(error, data) {
 
   svg.append("g") //y-axis
       .attr("class", "y axis")
-      .call(yAxis)
-      .append("text") //y-axis title
+      .call(yAxis);
+
+    svg.append("text") //y-axis title
       .attr("transform", "rotate(-90)")
       .attr("x", -260)
       .attr("y", -55)
@@ -132,11 +154,11 @@ d3.csv("call_type_data.csv", function(error, data) {
         .data(color.domain()).enter()
         .append("g")
         .attr("class","legend")
-        .attr("transform", "translate(" + (width-120) + "," + 10+ ")");
+        .attr("transform", "translate(" + (width-120) + "," + 50+ ")");
     
     // Creates color boxes in legend
     legend.append("rect")
-        .attr("x", 0) 
+        .attr("x", 5) 
         .attr("y", function(d, i) { return 20 * i; })
         .attr("width", 10)
         .attr("height", 10)
@@ -151,7 +173,8 @@ d3.csv("call_type_data.csv", function(error, data) {
         .text(function(d) {return d});
     
     legend.append("text")
-        .attr("x",0) 
-        .attr("y",-13)
+        .attr("x",5) 
+        .attr("y",-10)
+        //.style("font", "12px")
         .text("Incident Call Type");
 });
