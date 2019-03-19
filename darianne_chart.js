@@ -18,6 +18,8 @@ var y = d3.scale.linear()
 
 var color = d3.scale.category20();
 
+var formatTime = d3.time.format("%e %B");
+
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom");
@@ -58,7 +60,7 @@ var svg = d3.select("body").select("#vis1").append("svg")
     .style("fill", "#000000")
     .text("The plot of count of Call Type for Call Date Day. Color shows details about Call Type. The view is filtered on Call Type, which has multiple members selected.");
 
-var div = d3.select("#vis1")
+var div = d3.select("body").select("#vis1")
     .append("div")	
     .attr("class", "tooltip")				
     .style("opacity", 0);
@@ -67,7 +69,12 @@ d3.csv("call_type_data.csv", function(error, data) {
     // console.log(data)
     color.domain(d3.keys(data[0]).filter(function(key) { return key !== "date"; }));
     data.forEach(function(d) {
-  	    d.date = parseDate(d.date);
+          d.date = parseDate(d.date);
+          d.MI = +d.Medical_Incident;
+          d.A = +d.Alarms;
+          d.SF = +d.Structure_Fire;
+          d.TC = +d.Traffic_Collision;
+          d.CASC = +d.Citizen_Assist_Service_Call;
     });
 
   var browsers = stack(color.domain().map(function(name) {
@@ -97,24 +104,37 @@ d3.csv("call_type_data.csv", function(error, data) {
   browser.append("path")
       .attr("class", "area")
       .attr("d", function(d) { 
-          //console.log(d);
+          console.log(d);
           return area(d.values); })
       .style("fill", function(d) { return color(d.name); })
       .on("mouseover", function(d) {		
         div.transition()		
-            //.duration(200)		
-            .style("opacity", .9)
-        div.html("Date: " + d.date + "<br/><br/>" 
-                 + "Incident Type: " + d[name] + "<br/><br/>"
-                 + "Number of Calls : " + d[name] + "<br/>")	
-            .style("left", (d3.event.pageX - 90) + "px")		
-            .style("top", (d3.event.pageY - 280) + "px");	
+            .duration(200)		
+            .style("opacity", .9);		
+        div	.html(formatTime(d.date) + "<br/>"  + d.name + d.A + d.SF + d.TC + d.CASC)	
+            .style("left", (d3.event.pageX) + "px")		
+            .style("top", (d3.event.pageY - 28) + "px");	
         })					
     .on("mouseout", function(d) {		
         div.transition()		
             .duration(500)		
             .style("opacity", 0);	
-    });;;
+    });
+    //   .on("mouseover", function(d) {		
+    //     div.transition()		
+    //         //.duration(200)		
+    //         .style("opacity", .9)
+    //     div.html("Date: " + d.date + "<br/><br/>" 
+    //              + "Incident Type: " + d[name] + "<br/><br/>"
+    //              + "Number of Calls : " + d[name] + "<br/>")	
+    //         .style("left", (d3.event.pageX - 90) + "px")		
+    //         .style("top", (d3.event.pageY - 280) + "px");	
+    //     })					
+    // .on("mouseout", function(d) {		
+    //     div.transition()		
+    //         .duration(500)		
+    //         .style("opacity", 0);	
+    // });;;
 
         
 //   browser.append("text")
