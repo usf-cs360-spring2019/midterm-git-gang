@@ -206,9 +206,9 @@ function create_chart(){
 
         svg.append("text")
             .attr('y', +380)
-            .attr('x', +590)
+            .attr('x', +557)
             .attr('class', "axis_label_small")
-            .text("Avg Travel Time")
+            .text("Avg Travel Time (minutes)")
 
         svg.append("text")
             .attr('y', +400)
